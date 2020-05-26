@@ -1,0 +1,22 @@
+server:
+  port: 8092
+
+#xxl-job 配置信息
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:8090/xxl-job-admin
+    executor:
+      appName: crawler-job
+      ip:
+      port: 9999
+      logPath: /data/applogs/xxl-job/jobhandler
+      logRetentionDays: -1
+    accessToken:
+
+spring:
+  #redis 配置信息
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
