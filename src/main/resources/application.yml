@@ -7,9 +7,9 @@ xxl:
     admin:
       addresses: http://localhost:8090/xxl-job-admin
     executor:
-      appName: crawler-job
+      appName: noah-job
       ip:
-      port: 9999
+      port: 9097
       logPath: /data/applogs/xxl-job/jobhandler
       logRetentionDays: -1
     accessToken:
