@@ -41,6 +41,6 @@ public class PageHtml {
     }
 
     public static void main(String[] args) {
-        System.out.println(PageHtml.getPageHtml("https://www.mafengwo.cn/"));
+        System.out.println(PageHtml.getPageHtml("https://bbs.qyer.com/"));
     }
 }

@@ -2,7 +2,6 @@ package com.ccty.noah.util.http;
 
 import com.ccty.noah.aop.aspect.exception.NoahException;
 import com.ccty.noah.constants.ExceptionType;
-import com.ccty.noah.constants.HTTPStatusEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -310,13 +309,13 @@ public class HTTPSClientUtil {
      * 校验http是否请求成功
      * @param response
      */
-    private static void validCode(HttpResponse response){
+    private static void validCode(HttpResponse response) throws Exception{
         Optional.ofNullable(response).orElseThrow(()->
                 new NoahException(ExceptionType.HTTP_NO_RESPONSE.getCode(),ExceptionType.HTTP_NO_RESPONSE.getName()));
         if(200!=response.getStatusLine().getStatusCode()){
             throw new NoahException(ExceptionType.HTTP_RESPONSE_ERROR.getCode(),
                     ExceptionType.HTTP_RESPONSE_ERROR.getName()+response.getStatusLine().getStatusCode()
-                            +" 错误信息为："+ HTTPStatusEnum.getDesc(response.getStatusLine().getStatusCode()));
+                            +" 错误信息为："+ EntityUtils.toString(response.getEntity(),DEFAULT_CHARSET));
         }
     }
 
