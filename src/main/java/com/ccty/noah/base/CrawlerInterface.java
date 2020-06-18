@@ -12,7 +12,9 @@ public interface CrawlerInterface {
      */
     static enum ArticleSources{
         //去哪儿
-        QUNAER(1,"去哪儿网");
+        QUNAER(1,"去哪儿网"),
+        //穷游
+        QYER(2,"穷游网");
         private Integer code;
         private String name;
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccty.noah.domain.mapper.ArticleMapper">
+
+    <!-- 获取所有的文章 -->
+    <select id="queryArticles" resultType="com.ccty.noah.domain.database.ArticleDO">
+       select id,title,content,source as 'articleSource',url
+       from ccty_article
+       where is_deleted = 0 and is_sync = 0
+    </select>
+
+    <!-- 修改文章信息 -->
+    <update id="updateArticles" parameterType="java.util.List">
+        <foreach collection="list" item="article" separator=";">
+            update ccty_article
+            set content = #{article.content},
+            creator = #{article.creator},
+            is_sync = 1
+            where id = #{article.id}
+        </foreach>
+    </update>
+
+
+</mapper>
